@@ -1,0 +1,10 @@
+# Local copies taken before each redesign; git history replaces them.
+.backup/
+
+# Personal Claude Code settings (launch.json is shared on purpose).
+.claude/settings.local.json
+
+# OS clutter
+Thumbs.db
+desktop.ini
+.DS_Store

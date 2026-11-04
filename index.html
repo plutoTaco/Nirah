@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>NIRAH — Curated for Every Lifestyle</title>
+  <meta name="description" content="NIRAH is a curated online store for everyday living: reviewed products, honest prices and delivery from our own stock.">
+  <meta name="theme-color" content="#f3eee5">
+  <meta name="color-scheme" content="light">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%231f3a2c'/%3E%3Cpath d='M7 11h18l-1.4 15.2a1.6 1.6 0 0 1-1.6 1.5H10a1.6 1.6 0 0 1-1.6-1.5L7 11Z' fill='none' stroke='%23f3eee5' stroke-width='2'/%3E%3Cpath d='M12 11V9a4 4 0 0 1 8 0v2' fill='none' stroke='%23f3eee5' stroke-width='2'/%3E%3Cpath d='M12.6 23.5v-8l6.8 8v-8' fill='none' stroke='%23c9973a' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://images.unsplash.com">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:opsz,wght@14..32,300..700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css?v=atelier-3">
+  <script type="application/ld+json" id="schema">{}</script>
+</head>
+<body>
+  <!-- Festive intro: the first page a visitor opens in a browser session
+       starts behind this full-screen banner, which lifts away after a beat
+       (app.js times it, motion.js animates it). Add ?intro to the URL to
+       see it again. -->
+  <div class="intro" id="intro" hidden>
+    <img class="intro__fill" data-src="assets/promos/diwali-sale.webp" alt="" aria-hidden="true">
+    <img class="intro__img" data-src="assets/promos/diwali-sale.webp" alt="Diwali Sale: Zabardast prices, 50 to 80% off" width="2000" height="935">
+    <button class="intro__skip" type="button">Skip <svg class="icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m6 15 6-6 6 6"/></svg></button>
+    <span class="intro__progress" aria-hidden="true"><span></span></span>
+  </div>
+  <script>
+    // Decided inline, before first paint, so the shop never flashes first
+    // and later page loads don't download the banner at all.
+    (() => {
+      const el = document.getElementById("intro");
+      const key = "nirah-intro";
+      let seen = false;
+      try {
+        seen = sessionStorage.getItem(key) === "1";
+        sessionStorage.setItem(key, "1");
+      } catch (e) {}
+      if (/[?&]intro\b/.test(location.search)) seen = false;
+      if (seen || /^#\/(pay|checkout)\b/.test(location.hash)) return el.remove();
+      el.querySelectorAll("[data-src]").forEach((img) => (img.src = img.dataset.src));
+      el.hidden = false;
+      document.documentElement.classList.add("is-intro");
+    })();
+  </script>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header" id="site-header"></header>
+  <div class="page">
+    <main class="main" id="main" tabindex="-1">
+      <div class="empty"><div class="spinner"></div></div>
+    </main>
+    <footer class="site-footer" id="site-footer"></footer>
+  </div>
+  <noscript><p style="padding:120px 24px;text-align:center">NIRAH needs JavaScript to run this prototype.</p></noscript>
+
+  <!-- GSAP 3.13: every plugin ships in the public package. If the CDN is
+       unreachable the storefront still works; motion.js simply stays idle. -->
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/SplitText.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/Flip.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollToPlugin.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/MotionPathPlugin.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/CustomEase.min.js"></script>
+
+  <script src="js/ui.js?v=atelier-3"></script>
+  <script src="js/seed.js?v=atelier-3"></script>
+  <script src="js/store.js?v=atelier-3"></script>
+  <script src="js/gateway.js?v=atelier-3"></script>
+  <script src="js/motion.js?v=atelier-3"></script>
+  <script src="js/app.js?v=atelier-3"></script>
+</body>
+</html>

@@ -1,0 +1,215 @@
+{
+  "meta": {
+    "name": "NIRAH — Editorial Atelier",
+    "description": "Redesign profile for the NIRAH storefront: a warm, editorial shop for a small, hand-checked range of everyday goods. Paper-toned ground, forest ink, a clay accent, a high-contrast serif for display and a quiet grotesk for everything functional. Motion is premium and unhurried, built on GSAP.",
+    "source_references": ["Described style (no image reference): print-magazine editorial layouts, Indian craft-store warmth, the existing NIRAH green brand mark"],
+    "created_at": "2026-11-02"
+  },
+  "design_system": {
+    "color": {
+      "palette_type": "analogous with a complementary accent",
+      "primary": { "hex": "#1F3A2C", "role": "Forest ink: primary buttons, hero ground, footer, active states" },
+      "secondary": { "hex": "#C9973A", "role": "Saffron: star ratings, 'New' badges, small highlights on dark ground" },
+      "accent": { "hex": "#B4532A", "role": "Clay: one call-to-action emphasis per view, sale prices, offer kickers, italic display accents" },
+      "neutral": {
+        "scale": ["#FBF8F2", "#F3EEE5", "#E8E1D4", "#CFC6B6", "#8C8577", "#5F5A50", "#1B1A17"],
+        "usage": "#F3EEE5 page ground; #FBF8F2 raised cards; #E8E1D4 image wells; #1B1A17 primary text (15.6:1 on ground); #5F5A50 secondary text (6.0:1); #8C8577 decoration only"
+      },
+      "semantic": { "success": "#2E6B45", "warning": "#9A5A00", "error": "#B23A1E", "info": "#1F5A8A" },
+      "surface": { "background": "#F3EEE5", "card": "#FBF8F2", "elevated": "#FFFDF8" },
+      "contrast_strategy": "dark-on-light dominant; light-on-forest for hero, offer and footer bands; every text pair at least 4.5:1"
+    },
+    "typography": {
+      "type_scale": {
+        "display": { "size": "clamp(3.5rem, 2rem + 7.2vw, 9.5rem)", "weight": "400", "line_height": "0.92", "tracking": "-0.035em" },
+        "heading_1": { "size": "clamp(2.75rem, 1.6rem + 4.4vw, 5.5rem)", "weight": "400", "line_height": "0.98", "tracking": "-0.03em" },
+        "heading_2": { "size": "clamp(2.25rem, 1.4rem + 3.2vw, 4.25rem)", "weight": "400", "line_height": "1", "tracking": "-0.025em" },
+        "heading_3": { "size": "1.0625rem", "weight": "600", "line_height": "1.3", "tracking": "-0.015em" },
+        "body": { "size": "1rem", "weight": "400", "line_height": "1.55", "tracking": "-0.006em" },
+        "body_small": { "size": "0.875rem", "weight": "400", "line_height": "1.5", "tracking": "0" },
+        "caption": { "size": "0.8125rem", "weight": "500", "line_height": "1.4", "tracking": "0" },
+        "overline": { "size": "0.6875rem", "weight": "500", "line_height": "1.2", "tracking": "0.14em" }
+      },
+      "font_families": {
+        "heading": "Instrument Serif (display and section titles only; italic used for one accent word)",
+        "body": "Inter (variable, optical size) for UI, body, product names and headings inside functional pages",
+        "mono": "JetBrains Mono for overlines, indices, counts and SKUs, always uppercase"
+      },
+      "font_style_notes": "High-contrast transitional serif at very large sizes against a neutral grotesk. Serif is never bolded. Mono overlines carry an index number (01 —) to give sections a magazine running order."
+    },
+    "spacing": {
+      "base_unit": "4px",
+      "scale": ["4px", "8px", "12px", "16px", "24px", "32px", "48px", "64px", "96px", "144px"],
+      "content_density": "spacious",
+      "section_rhythm": "Large, even section gaps (clamp 5–9rem) separated by hairline rules; dense product grids inside generous sections"
+    },
+    "layout": {
+      "grid_system": "12-column fluid grid",
+      "max_content_width": "88rem",
+      "columns": "12 desktop / 6 tablet / 2 phone for products",
+      "gutter": "clamp(1rem, 3.2vw, 2.5rem)",
+      "breakpoints": ["480px", "768px", "1024px", "1280px"],
+      "alignment_tendency": "asymmetric"
+    },
+    "shape": {
+      "border_radius": { "small": "4px", "medium": "10px", "large": "16px", "pill": "999px" },
+      "border_usage": "subtle 1px hairlines as editorial rules; no card outlines",
+      "divider_style": "1px rgba(27,26,23,0.14) full-width rules that draw in from the left"
+    },
+    "elevation": {
+      "shadow_style": "soft diffused, used only for floating layers (menus, sheets, toasts)",
+      "levels": {
+        "low": "0 1px 2px rgba(27,26,23,0.06)",
+        "medium": "0 12px 32px rgba(27,26,23,0.10), 0 2px 6px rgba(27,26,23,0.05)",
+        "high": "0 32px 80px rgba(27,26,23,0.22), 0 8px 20px rgba(27,26,23,0.08)"
+      },
+      "depth_cues": "overlapping layers and parallax rather than shadows"
+    },
+    "iconography": { "style": "outlined, round caps", "stroke_weight": "1.6", "size_scale": ["16px", "20px", "24px"], "preferred_set": "existing NIRAH inline icon set" },
+    "motion": {
+      "easing": "CustomEase 'nirah' = cubic-bezier(0.22, 1, 0.36, 1) for 80% of motion; power2.in for exits; none for scrubbed scroll",
+      "duration_scale": { "micro": "180ms", "normal": "500ms", "macro": "1100ms" },
+      "entrance_pattern": "masked rise: text lines slide up from behind a clip, images unveil with clip-path while settling from scale 1.12",
+      "exit_pattern": "short fade with a 12px drop, power2.in, about 60% of the entrance duration",
+      "philosophy": "cinematic but restrained: premium personality, no overshoot except the cart badge"
+    },
+    "components": {
+      "button_style": "Pill buttons; primary is forest ink with paper text and a magnetic pull on fine pointers; secondary is an underlined text link whose rule wipes on hover",
+      "input_style": "Paper-white fields with a hairline border and a forest focus ring",
+      "card_style": "Borderless product cards: 4:5 image well with 10px radius, mono category overline, sans name, tabular price; quick-add sits in the image corner",
+      "navigation_pattern": "Fixed translucent top bar that hides on scroll down and returns on scroll up, with a scroll-progress hairline; floating tab bar on phones",
+      "modal_style": "Existing spring-driven sheets restyled to paper surfaces",
+      "list_style": "Numbered editorial lists with hairline rules",
+      "component_notes": "Section heads pair a mono index (01 —) and overline with a large serif title; one italic clay word per hero headline"
+    }
+  },
+  "design_style": {
+    "aesthetic": {
+      "mood": ["warm", "considered", "calm", "confident", "tactile"],
+      "visual_metaphor": "A printed shop catalogue on uncoated paper",
+      "era_influence": "Contemporary editorial (2020s independent magazines) with mid-century catalogue numbering",
+      "genre": "luxury editorial commerce",
+      "personality_traits": ["discerning", "honest", "unhurried", "warm"],
+      "adjectives": ["papery", "inky", "grounded", "precise"]
+    },
+    "visual_language": {
+      "complexity": "moderate",
+      "ornamentation": "subtle accents",
+      "whitespace_usage": "generous; whitespace frames each product like a plate in a catalogue",
+      "visual_weight_distribution": "heavy display type top-left, imagery weighted right",
+      "focal_strategy": "progressive reveal",
+      "contrast_level": "high for type, low for surfaces",
+      "texture_usage": "flat paper tones; photography provides all texture"
+    },
+    "composition": {
+      "hierarchy_method": "scale contrast",
+      "balance_type": "asymmetric",
+      "flow_direction": "Z-pattern on the hero, then vertical with one horizontal pinned chapter (categories)",
+      "grouping_strategy": "Numbered chapters separated by rules",
+      "negative_space_role": "Isolates the headline and lets products breathe"
+    },
+    "imagery": {
+      "photo_treatment": "Natural colour, soft daylight, cropped tight; slight warm wells behind cut-outs",
+      "illustration_style": "none",
+      "graphic_elements": "hairline rules, mono indices, an italic accent word",
+      "pattern_usage": "none",
+      "image_shape": "rounded rectangles (10px) in 4:5 and 1:1"
+    },
+    "interaction_feel": {
+      "feedback_style": "Immediate press scale plus a product image that flies along an arc into the cart",
+      "hover_behavior": "Images ease in 4%, links wipe an underline, primary buttons lean toward the pointer",
+      "transition_personality": "smooth glide",
+      "loading_style": "Quiet spinner; content enters with masked rises",
+      "microinteraction_density": "moderate"
+    },
+    "brand_voice_in_ui": {
+      "tone": "plain-spoken and reassuring",
+      "formality": "semi-formal",
+      "cta_style": "direct imperative",
+      "empty_state_approach": "Short explanation and one way forward",
+      "error_tone": "Specific and calm; says what to do next"
+    }
+  },
+  "visual_effects": {
+    "overview": {
+      "effect_intensity": "moderate",
+      "performance_tier": "medium",
+      "fallback_strategy": "If GSAP fails to load, content renders statically with CSS-only reveals; prefers-reduced-motion disables pinning, parallax, scrubbing and the marquee",
+      "primary_technology": "GSAP 3.13 (ScrollTrigger, SplitText, Flip, ScrollToPlugin, MotionPathPlugin, CustomEase)"
+    },
+    "background_effects": {
+      "type": "none",
+      "description": "Flat paper ground; depth comes from parallax photography",
+      "technology": "CSS",
+      "params": { "color_palette": ["#F3EEE5"], "speed": "n/a", "density": "n/a", "opacity": "1", "blend_mode": "normal" }
+    },
+    "particle_systems": {
+      "enabled": false,
+      "type": "custom",
+      "description": "Not used",
+      "technology": "none",
+      "params": { "count": 0, "shape": "n/a", "size_range": "n/a", "movement_pattern": "n/a", "color_behavior": "n/a", "interaction": "none", "spawn_area": "n/a" }
+    },
+    "3d_elements": {
+      "enabled": false,
+      "type": "product-viewer",
+      "description": "Not used",
+      "technology": "none",
+      "params": { "renderer": "n/a", "lighting": "n/a", "camera": "n/a", "materials": "n/a", "geometry": "n/a", "post_processing": [], "interaction_model": "n/a" }
+    },
+    "shader_effects": {
+      "enabled": false,
+      "type": "custom-GLSL",
+      "description": "Not used",
+      "technology": "none",
+      "params": { "uniforms": [], "vertex_manipulation": "n/a", "fragment_output": "n/a", "noise_type": "n/a", "distortion": "n/a" }
+    },
+    "scroll_effects": {
+      "parallax": { "enabled": true, "layers": "3", "depth_range": "-18% to +14% yPercent", "speed_curve": "linear (ease none), scrub 0.6–1s" },
+      "scroll_triggered_animations": {
+        "enabled": true,
+        "trigger_points": ["top 85%", "top 70%", "top top (pin)"],
+        "animation_type": "clip-reveal",
+        "scrub_behavior": "triggered for content reveals; scrubbed for parallax, manifesto word fill, category pin and progress hairline"
+      },
+      "scroll_morphing": { "enabled": true, "description": "Categories chapter pins and converts vertical scroll into horizontal travel on wide screens; deals marquee speeds up with scroll velocity" }
+    },
+    "text_effects": {
+      "type": "split-letter-animate",
+      "description": "Display headings split into masked lines that rise; manifesto split into words that fill from 15% to 100% ink as you scroll; footer wordmark characters rise",
+      "technology": "GSAP SplitText",
+      "params": { "split_strategy": "by-line", "animation_per_unit": "yPercent 110 → 0", "stagger": "0.08s lines, 0.04s chars", "effect_style": "masked rise" }
+    },
+    "cursor_effects": {
+      "enabled": true,
+      "type": "magnetic-buttons",
+      "description": "Primary CTAs and round icon buttons lean toward fine pointers using gsap.quickTo",
+      "params": { "shape": "n/a", "size": "n/a", "blend_mode": "normal", "trail": false, "interaction_zone": "element bounds, 30% pull" }
+    },
+    "image_effects": {
+      "type": "reveal-clip",
+      "description": "Hero, offer and category banner images unveil with clip-path inset and settle from scale 1.12; product images ease to 1.04 on hover",
+      "technology": "GSAP + CSS",
+      "params": { "filter_pipeline": "none", "hover_transform": "scale(1.04)", "reveal_animation": "clip-path inset(100% 0 0 0) → inset(0)", "distortion_type": "none" }
+    },
+    "glassmorphism_neumorphism": {
+      "enabled": true,
+      "style": "frosted-layers",
+      "params": { "blur_radius": "20px", "transparency": "0.78", "border_treatment": "hairline inner edge", "shadow_type": "soft diffused", "light_source_angle": "top" }
+    },
+    "canvas_drawings": {
+      "enabled": false,
+      "type": "none",
+      "description": "The previous fluted-glass canvas hero is retired",
+      "technology": "none",
+      "params": { "draw_method": "n/a", "animation_loop": "n/a", "color_scheme": "n/a", "responsiveness": "n/a", "interaction": "n/a" }
+    },
+    "svg_animations": {
+      "enabled": true,
+      "type": "path-draw",
+      "description": "Section rules draw in from the left; add-to-cart flight follows a MotionPath arc",
+      "params": { "animation_method": "GSAP scaleX and MotionPathPlugin", "path_morphing": false, "stroke_animation": "scaleX 0 → 1", "filter_effects": "none" }
+    },
+    "composite_notes": "Every view mounts its animations inside one gsap.context scoped to <main>; the router reverts it before the next view renders, so SplitText, ScrollTriggers and pins never outlive their page. GSAP is loaded from jsDelivr; if it is unavailable the site falls back to the CSS reveal classes."
+  }
+}
